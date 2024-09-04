@@ -113,4 +113,18 @@ keys       mem      clients blocked requests            connections
 
 * Keyspace hits/misses: 키 조회 성공 및 실패 횟수
 
+### redis-benchmark
 
+Redis 서버의 성능을 테스트하는 데 사용됩니다. 여러 시나리오에서 Redis가 명령을 얼마나 빠르게 처리할 수 있는지를 측정할 수 있습니다. 여러 클라이언트가 동시에 명령을 서버에 보내는 상황을 시뮬레이션하여, 부하 상태에서 초당 처리할 수 있는 작업량(throughput)을 측정할 수 있습니다.
+
+```
+redis-benchmark
+```
+
+```
+Summary:
+  throughput summary: 328947.38 requests per second
+  latency summary (msec):
+          avg       min       p50       p95       p99       max
+        0.083     0.024     0.087     0.103     0.111     0.311
+```
