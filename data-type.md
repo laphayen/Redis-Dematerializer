@@ -27,26 +27,51 @@ SET user:data "\x80\x81\x82"
 
 문자열은 바이너리 안전(binaries-safe)하여, 어떤 유형의 데이터든 저장할 수 있습니다. (텍스트, JSON, 숫자, 바이너리 데이터 등) 문자열은 최대 512MB까지 저장할 수 있습니다.
 
+```
+
+127.0.0.1:6379> SET users:100:email laphayen@gmail.com
+OK
+
+127.0.0.1:6379> MGET users:100:name users:100:email
+1) "laphayen"
+2) "laphayen@gmail.com"
+127.0.0.1:6379> 
+```
+
 1. SET:
 키에 문자열 값을 저장합니다.
 기존에 값이 있으면 덮어씁니다.
 형식: SET key value
 예시: SET mykey "Hello, Redis!"
+```
+127.0.0.1:6379> SET "users:100:name" "laphayen"
+OK
+```
 
 2. GET:
 키에 저장된 값을 가져옵니다.
 형식: GET key
 예시: GET mykey
+```
+127.0.0.1:6379> GET users:100:email
+"laphayen@gmail.com"
+```
 
 3. MSET:
 여러 키와 값을 한 번에 설정합니다.
 형식: MSET key1 value1 key2 value2 ...
 예시: MSET key1 "Hello" key2 "Redis"
+```
+127.0.0.1:6379> MGET users:100:name users:100:email
+1) "laphayen"
+2) "laphayen@gmail.com"
+```
 
 4. MGET:
 여러 키의 값을 한 번에 가져옵니다.
 형식: MGET key1 key2 ...
 예시: MGET key1 key2
+
 
 5. INCR / INCRBY:
 문자열로 저장된 숫자 값을 1씩 증가시키거나 지정한 만큼 증가시킵니다.
