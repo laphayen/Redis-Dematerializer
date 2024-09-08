@@ -82,6 +82,13 @@ INCRBY key increment
 INCR counter
 INCRBY counter 5
 
+```
+(integer) 1
+127.0.0.1:6379> INCRBY counter 10
+(integer) 11
+```
+
+
 6. DECR / DECRBY:
 문자열로 저장된 숫자 값을 1씩 감소시키거나 지정한 만큼 감소시킵니다.
 형식:
@@ -90,6 +97,13 @@ DECRBY key decrement
 예시:
 DECR counter
 DECRBY counter 3
+
+```
+(integer) 11
+127.0.0.1:6379> DECRBY counter 7
+(integer) 4
+```
+
 
 7. GETSET:
 기존 값을 가져오면서 새로운 값을 설정합니다.
@@ -105,6 +119,18 @@ DECRBY counter 3
 문자열의 길이를 반환합니다.
 형식: STRLEN key
 예시: STRLEN mykey
+
+10. SETNX:
+주어진 키가 존재하지 않을 경우에만 값을 설정합니다.
+형식: SETNX key value
+예시: SETNX mykey "Hello"
+```
+127.0.0.1:6379> SETNX users:100:email test@gmail.com
+(integer) 0
+127.0.0.1:6379> SETNX users:101:email test@gmail.com
+(integer) 1
+```
+
 
 ```
 SET mykey "Hello"
